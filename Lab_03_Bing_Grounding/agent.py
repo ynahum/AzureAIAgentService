@@ -57,8 +57,9 @@ with project_client:
     print(messages.data[0].content[0].text.value)
     
     #Displaying the URL Citation
-    content = messages['data'][0]['content'][0]
-    url_citation = content['text']['annotations'][0]['url_citation']['url'] 
-    print(url_citation)
+    content = messages['data'][0]['content'][0]['text']['annotations']
+    for annotation in content:
+     url_citation = annotation['url_citation']['url']
+     print(url_citation)
     
     
