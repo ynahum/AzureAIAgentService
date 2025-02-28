@@ -10,7 +10,7 @@ app = func.FunctionApp()
 
 @app.queue_trigger(arg_name="msg", queue_name="inputqueue",
                                connection="STORAGE_CONNECTION") 
-def deathNoteByBatman(msg: func.QueueMessage) -> None:
+def GreetingByBatman(msg: func.QueueMessage) -> None:
     logging.info('Python queue trigger function processed a queue item')
 
     # Queue to send message to
@@ -25,21 +25,7 @@ def deathNoteByBatman(msg: func.QueueMessage) -> None:
     messagepayload = json.loads(msg.get_body().decode('utf-8'))
     name=messagepayload["name"]
 
-    death_note = str(name) + """ ...
-
-        You’ve made your choices. Walked your path. And now, the shadows have come to collect.
-
-        Justice isn’t always served in the light. Sometimes, it’s delivered in the dark—where no one sees, no one hears. But make no mistake... it comes for everyone.
-
-        Tonight, it comes for you.
-
-        You won’t know when. You won’t know how. But when the darkness takes you, you’ll understand...
-
-        I’m not your savior. I’m not your executioner.
-
-        I’m just the reckoning you never saw coming.
-
-        Goodbye, """ +str(name)
+    death_note = f""" It's not who you are underneath, {name}, but what you do that defines you. Stay strong, stay vigilant… and happy to have you here """ 
 
     result_message = {
         'Value': death_note

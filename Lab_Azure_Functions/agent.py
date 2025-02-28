@@ -28,12 +28,12 @@ agent = project_client.agents.create_agent(
                 "type": "azure_function",
                 "azure_function": {
                     "function": {
-                        "name": "queue_trigger1",
-                        "description": "Deliver a DeathNote to the user in Batman's style.",
+                        "name": "GreetingByBatman",
+                        "description": "Deliver a Greeting to the user in Batman's style.",
                         "parameters": {
                             "type": "object",
                             "properties": {
-                                "name": {"type": "string", "description": "the name of the user or the name of the person to which the deathnote is to be delivered."},
+                                "name": {"type": "string", "description": "the name of the user or the name of the person to which the greeting is to be delivered."},
                             },
                             "required": ["name"]
                         }
@@ -62,7 +62,7 @@ thread = project_client.agents.create_thread()
 message = project_client.agents.create_message(
         thread_id=thread.id,
         role="user",
-        content="deliver a deathnote by batman to Kuljot",
+        content="deliver a greeting by batman to Kuljot",
 )
 print(f"Created message, ID: {message.id}")
 
