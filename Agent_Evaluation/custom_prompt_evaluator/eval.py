@@ -14,10 +14,10 @@ class PolitenessEvaluator:
     def __init__(self, model_config):
         current_dir = os.path.dirname(__file__)
         prompty_path = os.path.join(current_dir, "politeness.prompty")
-        self._flow = load_flow(source=prompty_path, model = {"configuration": model_config})
-        
+        self._flow = load_flow(source=prompty_path, model={"configuration": model_config})
+
     def __call__(self, *, response: str, **kwargs):
-        llm_response = self._flow.run(response=response)
+        llm_response = self._flow(response=response)
         try:
             response = json.loads(llm_response)
         except Exception as ex:
@@ -30,7 +30,7 @@ def agent_creation_and_completion(query: str):
         conn_str=os.getenv("PROJECT_CONNECTION_STRING")
     )
 
-    model=os.getenv("MODEL_DEPLOYMENT_NAME")
+    model=os.getenv("AZURE_OPENAI_DEPLOYMENT")
 
     agent = project_client.agents.create_agent(
             model=model,
@@ -77,6 +77,7 @@ def main():
     }
 
     model_config = {
+        "type": "AzureOpenAI",
         "azure_endpoint": os.getenv("AZURE_OPENAI_ENDPOINT"),
         "api_key": os.getenv("AZURE_OPENAI_API_KEY"),
         "azure_deployment": os.getenv("AZURE_OPENAI_DEPLOYMENT"),
@@ -89,3 +90,6 @@ def main():
 
     politeness_score = politeness_eval(response=response)
     print(politeness_score)
+    
+if __name__ == "__main__":
+    main()
