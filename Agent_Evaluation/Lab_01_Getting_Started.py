@@ -1,3 +1,5 @@
+#pip install azure-ai-evaluation
+
 import os 
 from azure.identity import DefaultAzureCredential
 from dotenv import load_dotenv
@@ -56,6 +58,4 @@ print(coherence_score)
 fluency_score = FluencyEvaluator(model_config)(**query_response)
 print(fluency_score)
 
-#Running similarity check and evaluation
-similarity_score = SimilarityEvaluator(model_config)(**query_response)
-print(similarity_score)
+
