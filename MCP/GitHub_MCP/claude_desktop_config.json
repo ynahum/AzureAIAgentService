@@ -11,7 +11,7 @@
         "ghcr.io/github/github-mcp-server"
       ],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "Your_GitHub_Personal_Access_Token_Goes_Here"
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "Your_GitHub_Personal_Access_Token"
       }
     }
   }
