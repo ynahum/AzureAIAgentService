@@ -5,6 +5,8 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
+OPEN_WEATHER_API_KEY=os.getenv("OPEN_WEATHER_API_KEY")
+
 def get_weather(location):
     """
     Fetches the weather information for the specified location.
@@ -14,15 +16,17 @@ def get_weather(location):
     :rtype: str
     """
     
-   #calling open weather map API for information retrieval
-   #fetching latitude and longitude of the specific location respectively
-    url = "http://api.openweathermap.org/geo/1.0/direct?q=" + location + "&limit=1&appid=YOUR_API_KEY"
+    #calling open weather map API for information retrieval
+    #fetching latitude and longitude of the specific location respectively
+    print("Fetching weather information for location:", location)
+    print("OPEN_WEATHER_API_KEY:", OPEN_WEATHER_API_KEY)
+    url = f"http://api.openweathermap.org/geo/1.0/direct?q={location}&limit=1&appid={OPEN_WEATHER_API_KEY}"
     response=requests.get(url)
     get_response=response.json()
     latitude=get_response[0]['lat']
     longitude = get_response[0]['lon']
 
-    url_final = "https://api.openweathermap.org/data/2.5/weather?lat=" + str(latitude) + "&lon=" + str(longitude) + "&appid=YOUR_API_KEY"
+    url_final = f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={OPEN_WEATHER_API_KEY}"
     final_response = requests.get(url_final)
     final_response_json = final_response.json()
     weather=final_response_json['weather'][0]['description']
