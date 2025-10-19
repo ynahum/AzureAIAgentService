@@ -41,6 +41,7 @@ def get_user_info(user_id: int) -> str:
     :return: User information as a JSON string.
     :rtype: str
     """
+    print("Fetching user information for user ID:", user_id)
     mock_users = {
         1: {"name": "Alice", "email": "alice@example.com"},
         2: {"name": "Bob", "email": "bob@example.com"},

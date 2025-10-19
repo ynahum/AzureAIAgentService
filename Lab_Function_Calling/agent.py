@@ -42,7 +42,7 @@ with project_client:
     message = project_client.agents.create_message(
         thread_id=thread.id,
         role="user",
-        content="Hello can you please fetch weather information for london?",
+        content="Hello can you please fetch information for the user with user ID 1 and also the weather for London?",
     )
     print(f"Created message, ID: {message.id}")
 
