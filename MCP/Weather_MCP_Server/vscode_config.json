@@ -3,7 +3,7 @@
     "weather": {
             "command": "python",
             "args": [
-                "/ABSOLUTE/PATH/TO/PARENT/FOLDER/weather_server.py",
+                "/home/yair/dev/udemy/AzureAIAgentService/MCP/Weather_MCP_Server/weather_server.py",
                 "weather.py"
             ]
         }
